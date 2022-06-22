@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
+const path = require("path");
+const PORT = process.env.PORT || 3000;
 
 const register = require("./controllers/register");
 const signin = require("./controllers/signin");
@@ -47,8 +49,8 @@ app.post("/imageurl", (req, res) => {
   image.handleApiCall(req, res);
 });
 
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3000;
-}
-app.listen(port);
+// let port = process.env.PORT;
+// if (port == null || port == "") {
+//   port = 3000;
+// }
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
